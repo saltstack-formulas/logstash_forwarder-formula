@@ -18,6 +18,13 @@ logstash_forwarder:
                     - /var/log/nginx/*error*
                 fields:
                     type: nginx-error
+        # Extend the 'files' option. Can be specified in multiple locations/pillar files.
+        files_extend:
+            apache:
+                paths:
+                    - /var/log/apache2/*.log
+                fields:
+                    type: apache
         cert_path: /etc/ssl/certs/logstash-forwarder.crt
         log_to_syslog: true
         cert_contents: |

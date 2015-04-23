@@ -11,7 +11,8 @@
         'paths': ['/var/log/syslog'],
         'fields': {'type': 'syslog'}
       }
-    ]
+    ],
+    'files_extend': {}
   },
   'RedHat': {
   	'pkg': 'logstash-forwarder',
@@ -25,6 +26,7 @@
         'paths': ['/var/log/messages'],
         'fields': {'type': 'syslog'}
       }
-    ]
+    ],
+    'files_extend': {}
   }
 }, merge=salt['pillar.get']('logstash_forwarder')) %}
