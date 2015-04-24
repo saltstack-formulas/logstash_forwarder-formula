@@ -1,4 +1,7 @@
 {%- from 'logstash_forwarder/map.jinja' import logstash_forwarder with context %}
+{%- for id, file_group in logstash_forwarder.files_extend.items() -%}
+  {%- do logstash_forwarder.files.append(file_group) -%}
+{%- endfor -%}
 {
   "network": {
     "servers": [

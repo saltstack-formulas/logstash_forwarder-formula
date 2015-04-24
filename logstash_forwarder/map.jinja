@@ -7,8 +7,12 @@
     'log_to_syslog': True,
     'init_file': 'salt://logstash_forwarder/files/logstash-forwarder.deb.init',
     'files': [
-      {'paths': ['/var/log/syslog'], 'type': 'syslog'}
-    ]
+      {
+        'paths': ['/var/log/syslog'],
+        'fields': {'type': 'syslog'}
+      }
+    ],
+    'files_extend': {}
   },
   'RedHat': {
   	'pkg': 'logstash-forwarder',
@@ -18,7 +22,11 @@
     'log_to_syslog': True,
     'init_file': 'salt://logstash_forwarder/files/logstash-forwarder.rpm.init',
     'files': [
-      {'paths': ['/var/log/messages'], 'type': 'syslog'}
-    ]
+      {
+        'paths': ['/var/log/messages'],
+        'fields': {'type': 'syslog'}
+      }
+    ],
+    'files_extend': {}
   }
 }, merge=salt['pillar.get']('logstash_forwarder')) %}
