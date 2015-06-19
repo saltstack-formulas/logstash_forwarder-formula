@@ -21,7 +21,7 @@ SCRIPTNAME=/etc/init.d/$NAME
 . /etc/init.d/functions
 
 [ -e /etc/sysconfig/logstash-forwarder ] && . /etc/sysconfig/logstash-forwarder
-DAEMON_ARGS="${DAEMON_ARGS:--config /etc/logstash-forwarder -spool-size 100 {% if logstash_forwarder.log_to_syslog %}-log-to-syslog{%- endif %}}"
+DAEMON_ARGS="${DAEMON_ARGS:--config /etc/logstash-forwarder -spool-size 100 {% if logstash_forwarder.log_to_syslog %}-log-to-syslog{%- endif %} {% if logstash_forwarder.quiet %}-quiet{%- endif %}}"
 
 start()
 {

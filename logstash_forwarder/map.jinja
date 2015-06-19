@@ -5,6 +5,7 @@
     'cert_path': '/etc/ssl/certs/logstash-forwarder.crt',
     'timeout': '15',
     'log_to_syslog': True,
+    'quiet': True,
     'init_file': 'salt://logstash_forwarder/files/logstash-forwarder.deb.init',
     'files': [
       {
@@ -20,6 +21,7 @@
   	'cert_path': '/etc/pki/tls/certs/logstash-forwarder.crt',
     'timeout': 15,
     'log_to_syslog': True,
+    'quiet': True,
     'init_file': 'salt://logstash_forwarder/files/logstash-forwarder.rpm.init',
     'files': [
       {
