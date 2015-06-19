@@ -28,8 +28,9 @@ this formula for two reasons:
 * The RedHat service init file is currently broken, see <https://github.com/elasticsearch/logstash-forwarder/pull/196>
 * By default, init files for both distro families enables 'log-to-syslog' when invoking 
   logstash-forwarder, which can pollute your syslog with unnecessary noise.  By default
-  this feature will remain on, but it can be turned off by setting logstash_forwarder:log_to_syslog
-  to false in your pillar data.
+  this feature will remain on, but we enable also the 'quiet' option so the configuration is ready
+  for production use. Both options can be turned off by setting logstash_forwarder:log_to_syslog or
+  logstash_forwarder:quiet to false in your pillar data.
 
 Usage
 =====
@@ -128,8 +129,10 @@ Overriding Platform Defaults
 -------------------
 This formula sets up certain defaults in map.jinja, specifically:
 
-* logstash-forwarder will send it's own messages to syslog.  You may want to turn this off once you
-  have a working configuration to keep your syslog from being too noisy.
+* logstash-forwarder will send it's own messages to syslog.
+* The 'quiet' option is enabled so the log is not polluted with too much noise.
+  You may want to turn this off when debugging. However, fatal errors are
+  always logged.
 * Name of the logstash-forwarder package is logstash-forwarder
 * Name of the logstash-forwarder service is logstash-forwarder
 * The latest version of logstash available will be installed  
@@ -140,6 +143,7 @@ These settings can be overridden by adding the appropriate keys to your
 pillar data, for example::
     logstash_forwarder:
         log_to_syslog: false
+        quiet: false
         pkg: logstash-forwarder-altversion
         svc: logstash-forwarder-alterversion
         timeout: 90
