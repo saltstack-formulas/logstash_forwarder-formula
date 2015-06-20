@@ -27,6 +27,7 @@ logstash_forwarder:
                     type: apache
         cert_path: /etc/ssl/certs/logstash-forwarder.crt
         log_to_syslog: true
+        quiet: true
         cert_contents: |
             -----BEGIN CERTIFICATE-----
             MIIDBzCCAe+gAwIBAgIJAImyMODCMdTFMA0GCSqGSIb3DQEBBQUAMBoxGDAWBgNV
