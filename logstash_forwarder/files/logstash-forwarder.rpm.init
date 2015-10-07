@@ -1,4 +1,4 @@
-{%- from 'logstash_forwarder/map.jinja' import logstash_forwarder with context %}
+{%- from 'logstash_forwarder/map.jinja' import logstash_forwarder with context -%}
 #!/bin/bash
 # chkconfig: 345 80 20
 # description: Logstash Forwarder
