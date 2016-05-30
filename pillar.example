@@ -48,3 +48,7 @@ logstash_forwarder:
             YRQ2WF1aPoB1CccqG0zn9thKJI0yhJUZ8xeY+KJx+/3/H6AckEduJZdNdWiaUi6p
             NHQnOJJ/BYleQ0Q=
             -----END CERTIFICATE-----
+	  repo:
+	     gpgurl: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+	     url: http://packages.elasticsearch.org/logstashforwarder/centos/
+	     gpgname: gpgName

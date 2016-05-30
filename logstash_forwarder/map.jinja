@@ -13,7 +13,13 @@
         'fields': {'type': 'syslog'}
       }
     ],
-    'files_extend': {}
+    'files_extend': {},
+    'repo':
+      {
+        'gpgurl': 'http://packages.elasticsearch.org/GPG-KEY-elasticsearch',
+        'url': 'http://packages.elasticsearch.org/logstashforwarder/debian',
+        'gpgname': 'Elasticsearch (Elasticsearch Signing Key)',
+      }
   },
   'RedHat': {
   	'pkg': 'logstash-forwarder',
@@ -29,6 +35,12 @@
         'fields': {'type': 'syslog'}
       }
     ],
-    'files_extend': {}
+    'files_extend': {},
+    'repo':
+      {
+        'gpgurl': 'http://packages.elasticsearch.org/GPG-KEY-elasticsearch',
+	'url': 'http://packages.elasticsearch.org/logstashforwarder/centos/',
+        'gpgname': 'gpg-pubkey-d88e42b4-52371eca',
+      }
   }
 }, merge=salt['pillar.get']('logstash_forwarder')) %}
