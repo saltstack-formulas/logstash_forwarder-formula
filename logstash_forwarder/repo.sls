@@ -1,15 +1,16 @@
+{%- if grains['os_family'] == 'RedHat' or grains['os_family'] == 'Debian' %}
 {%- from 'logstash_forwarder/map.jinja' import logstash_forwarder with context %}
 
 {%- if grains['os_family'] == 'Debian' %}
 logstash-forwarder-repo-key:
   cmd.run:
-    - name: wget -O - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
-    - unless: apt-key list | grep 'Elasticsearch (Elasticsearch Signing Key)'
+    - name: wget -O - {{ logstash_forwarder.repo.gpgurl }} | apt-key add -
+    - unless: apt-key list | grep '{{ logstash_forwarder.repo.gpgname }}'
 
 logstash-forwarder-repo:
   pkgrepo.managed:
     - humanname: Logstash Forwarder Debian Repository
-    - name: deb http://packages.elasticsearch.org/logstashforwarder/debian stable main
+    - name: deb {{ logstash_forwarder.repo.url }} stable main
     - require:
       - cmd: logstash-forwarder-repo-key
 
@@ -17,7 +18,7 @@ logstash-forwarder-repo:
 logstash-forwarder-repo-key:
   cmd.run:
     - name: rpm --import {{ logstash_forwarder.repo.gpgurl }}
-    - unless: rpm -qi gpg-pubkey-d88e42b4-52371eca
+    - unless: rpm -qi {{ logstash_forwarder.repo.gpgname }}
 
 logstash-forwarder-repo:
   pkgrepo.managed:
@@ -29,3 +30,4 @@ logstash-forwarder-repo:
     - require:
       - cmd: logstash-forwarder-repo-key
  {%- endif %}
+{%- endif %}

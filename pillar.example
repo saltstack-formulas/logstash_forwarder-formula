@@ -51,4 +51,5 @@ logstash_forwarder:
 	  repo:
 	     gpgurl: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
 	     url: http://packages.elasticsearch.org/logstashforwarder/centos/
+             gpgname: gpgName
 
